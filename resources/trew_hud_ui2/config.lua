@@ -49,7 +49,8 @@ Config.Zracni = {
 	{auto = "rmodm4gts", height = 0.07},
 	{auto = "f8t", height = 0.10},
 	{auto = "sc18", height = 0.09},
-	{auto = "rs6", height = 0.10}
+	{auto = "rs6", height = 0.10},
+	{auto = "rmodmk7", height = 0.11}
 }
 
 Config.ui = {
