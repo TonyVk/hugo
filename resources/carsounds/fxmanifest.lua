@@ -2,7 +2,7 @@ fx_version 'bodacious'
 game 'gta5'
 
 files {
-  'audioconfig/lambov10_game.dat151.rel',
+  --[['audioconfig/lambov10_game.dat151.rel',
   'audioconfig/lambov10_sounds.dat54.rel',
   'sfx/dlc_lambov10/lambov10.awc',
   'sfx/dlc_lambov10/lambov10_npc.awc',
@@ -114,7 +114,19 @@ files {
   'audioconfig/s85b50_game.dat151.rel',
   'audioconfig/s85b50_sounds.dat54.rel',
   'sfx/dlc_s85b50/s85b50.awc',
-  'sfx/dlc_s85b50/s85b50_npc.awc'
+  'sfx/dlc_s85b50/s85b50_npc.awc',
+  'audioconfig/talam52v10_game.dat151.rel',
+  'audioconfig/talam52v10_sounds.dat54.rel',
+  'sfx/dlc_talam52v10/talam52v10.awc',
+  'sfx/dlc_talam52v10/talam52v10_npc.awc',
+  'audioconfig/tagt3flat6_game.dat151.rel',
+  'audioconfig/tagt3flat6_sounds.dat54.rel',
+  'sfx/dlc_tagt3flat6/tagt3flat6.awc',
+  'sfx/dlc_tagt3flat6/tagt3flat6_npc.awc',]]
+
+  'audioconfig/*.dat151.rel',
+  'audioconfig/*.dat54.rel',
+  'sfx/**/*.awc'
 }
 
 data_file 'AUDIO_GAMEDATA' 'audioconfig/lambov10_game.dat'
@@ -193,3 +205,18 @@ data_file 'AUDIO_WAVEPACK' 'sfx/dlc_m5cracklemod'
 data_file 'AUDIO_GAMEDATA' 'audioconfig/s85b50_game.dat'
 data_file 'AUDIO_SOUNDDATA' 'audioconfig/s85b50_sounds.dat'
 data_file 'AUDIO_WAVEPACK' 'sfx/dlc_s85b50'
+data_file 'AUDIO_GAMEDATA' 'audioconfig/talam52v10_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/talam52v10_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_talam52v10'
+data_file 'AUDIO_GAMEDATA' 'audioconfig/tagt3flat6_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/tagt3flat6_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_tagt3flat6'
+data_file 'AUDIO_GAMEDATA' 'audioconfig/tamustanggt50_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/tamustanggt50_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_tamustanggt50'
+data_file 'AUDIO_GAMEDATA' 'audioconfig/ta011mit4g63_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/ta011mit4g63_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_ta011mit4g63'
+data_file 'AUDIO_GAMEDATA' 'audioconfig/subaruej20_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/subaruej20_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_subaruej20'

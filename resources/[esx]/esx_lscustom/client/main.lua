@@ -227,20 +227,35 @@ function OpenLSMenu(elems, menuName, menuTitle, parent)
 						ESX.ShowNotification("Kupio si "..data.current.mlabel.." motor!")
 						local vehicle = GetVehiclePedIsIn(PlayerPedId())
 						local currentradio = GetPlayerRadioStationIndex(vehicle)
-						ForceVehicleEngineAudio(vehicle, data.current.modNum)
-						Citizen.Wait(200)
-						print("changing radio")
-						if currentradio ~= 255 then
-							SetRadioToStationIndex(currentradio)
+						if data.current.modNum == "stock" then
+							ForceVehicleEngineAudio(vehicle, "stockiraj")
+							Citizen.Wait(200)
+							if currentradio ~= 255 then
+								SetRadioToStationIndex(currentradio)
+							else
+								SetRadioToStationName("OFF")
+							end
+							local netid = VehToNet(vehicle)
+							TriggerServerEvent("vozila:PromjeniZvuk", GetPlayerServerId(PlayerId()), netid, "stockiraj")
+							local globalplate = GetVehicleNumberPlateText(vehicle)
+							TriggerServerEvent("motor:PromjeniMotor", nil, globalplate)
+							Wait(500)
+							TriggerEvent('stage:Provjera', -1)
 						else
-							SetRadioToStationName("OFF")
+							ForceVehicleEngineAudio(vehicle, data.current.modNum)
+							Citizen.Wait(200)
+							if currentradio ~= 255 then
+								SetRadioToStationIndex(currentradio)
+							else
+								SetRadioToStationName("OFF")
+							end
+							local netid = VehToNet(vehicle)
+							TriggerServerEvent("vozila:PromjeniZvuk", GetPlayerServerId(PlayerId()), netid, data.current.modNum)
+							local globalplate = GetVehicleNumberPlateText(vehicle)
+							TriggerServerEvent("motor:PromjeniMotor", data.current.modNum, globalplate)
+							Wait(500)
+							TriggerEvent('stage:Provjera', -1)
 						end
-						local netid = VehToNet(vehicle)
-						TriggerServerEvent("vozila:PromjeniZvuk", GetPlayerServerId(PlayerId()), netid, data.current.modNum)
-						local globalplate = GetVehicleNumberPlateText(vehicle)
-						TriggerServerEvent("motor:PromjeniMotor", data.current.modNum, globalplate)
-						Wait(500)
-						TriggerEvent('stage:Provjera', -1)
 					elseif isZracni then
 						price = math.floor(vehiclePrice * 0.10)
 						TriggerServerEvent("lscs:kupiPeraje", GetEntityModel(vehicle), price, tablica)
@@ -460,6 +475,8 @@ function GetAction(data)
 					if globalplate ~= nil or globalplate ~= "" or globalplate ~= " " then
 						ESX.TriggerServerCallback('stage:ProvjeriVozilo',function(st)
 							if st ~= 0 then
+								_label = 'Stock motor - <span style="color:green;">$' .. price .. ' </span>'
+								table.insert(elements, {label = _label, modType = k, mlabel = "Stock motor", modNum = "stock"})
 								for i = 1, #Config.Motori do
 									if st.motor ~= Config.Motori[i].naziv then
 										_label = Config.Motori[i].label..' - <span style="color:green;">$' .. price .. ' </span>'

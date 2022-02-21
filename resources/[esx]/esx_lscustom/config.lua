@@ -110,12 +110,17 @@ Config.Zones = {
 Config.Motori = {
 	{naziv = "audiea855", label = "Audi i5"},
 	{naziv = "gallardov10", label = "Gallardo v10"},
+	{naziv = "talam52v10", label = "5.2 v10"},
 	{naziv = "audicrdb", label = "Audi v8"},
 	{naziv = "n55b30t0", label = "BMW i6 n55"},
 	{naziv = "s55b30", label = "BMW i6 s55"},
 	{naziv = "s85b50", label = "BMW v10"},
 	{naziv = "ferrarif154", label = "Ferrari v8"},
 	{naziv = "hondaf20c", label = "Honda i4"},
+	{naziv = "tagt3flat6", label = "GT3 RS"},
+	{naziv = "tamustanggt50", label = "5.0 v8"},
+	{naziv = "ta011mit4g63", label = "Lancer"},
+	{naziv = "subaruej20", label = "Impreza"}
 }
 
 Config.Colors = {
