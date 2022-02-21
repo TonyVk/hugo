@@ -19,7 +19,7 @@ AddEventHandler('lscs:kupiPeraje', function(model, price, veh)
 			TriggerClientEvent('esx_lscustom:installMod', _source)
 			TriggerClientEvent('esx:showNotification', _source, _U('purchased'))
 			--societyAccount.removeMoney(price)
-			price = 1.30*price
+			--price = 1.30*price
 			TriggerClientEvent('esx_meha:PucajCijenu', _source, veh, price)
 		--else
 			--TriggerClientEvent('esx_lscustom:cancelInstallMod', _source)
