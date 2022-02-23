@@ -54,7 +54,7 @@ end)
 
 RegisterNetEvent('stage:Provjera')
 AddEventHandler('stage:Provjera', function(currentSeat)
-	local globalplate  = GetVehicleNumberPlateText(GetVehiclePedIsIn(PlayerPedId(), false))
+	local globalplate  = ESX.Math.Trim(GetVehicleNumberPlateText(GetVehiclePedIsIn(PlayerPedId(), false)))
 	if currentSeat == -1 then
 		if globalplate ~= nil or globalplate ~= "" or globalplate ~= " " then
 			ESX.TriggerServerCallback('stage:ProvjeriVozilo',function(st)
@@ -218,7 +218,7 @@ function OpenLSMenu(elems, menuName, menuTitle, parent)
 							ESX.ShowNotification("Kupio si rucni mjenjac!")
 							TriggerEvent("EoTiIzSalona", 2)
 						end
-						local globalplate = GetVehicleNumberPlateText(vehicle)
+						local globalplate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 						TriggerServerEvent("meh:PromjeniMjenjac", data.current.modNum, globalplate)
 					elseif isSwap then
 						price = math.floor(vehiclePrice * 0.40)
@@ -237,7 +237,7 @@ function OpenLSMenu(elems, menuName, menuTitle, parent)
 							end
 							local netid = VehToNet(vehicle)
 							TriggerServerEvent("vozila:PromjeniZvuk", GetPlayerServerId(PlayerId()), netid, "stockiraj")
-							local globalplate = GetVehicleNumberPlateText(vehicle)
+							local globalplate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 							TriggerServerEvent("motor:PromjeniMotor", nil, globalplate)
 							Wait(500)
 							TriggerEvent('stage:Provjera', -1)
@@ -251,7 +251,7 @@ function OpenLSMenu(elems, menuName, menuTitle, parent)
 							end
 							local netid = VehToNet(vehicle)
 							TriggerServerEvent("vozila:PromjeniZvuk", GetPlayerServerId(PlayerId()), netid, data.current.modNum)
-							local globalplate = GetVehicleNumberPlateText(vehicle)
+							local globalplate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 							TriggerServerEvent("motor:PromjeniMotor", data.current.modNum, globalplate)
 							Wait(500)
 							TriggerEvent('stage:Provjera', -1)
@@ -266,7 +266,7 @@ function OpenLSMenu(elems, menuName, menuTitle, parent)
 							ESX.ShowNotification("Kupio si zracni ovjes!")
 						end
 						local vehicle = GetVehiclePedIsIn(PlayerPedId())
-						local globalplate = GetVehicleNumberPlateText(vehicle)
+						local globalplate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 						TriggerServerEvent("ovjes:PromjeniOvjes", data.current.modNum, globalplate)
 					elseif isStage then
 						if data.current.modNum == 1 then
@@ -281,7 +281,7 @@ function OpenLSMenu(elems, menuName, menuTitle, parent)
 						TriggerServerEvent("lscs:kupiPeraje", GetEntityModel(vehicle), price, tablica)
 						TriggerServerEvent("DiscordBot:Mehanicari", GetPlayerName(PlayerId()).." je kupio dio za $"..price)
 						ESX.ShowNotification("Kupio si stage "..data.current.modNum.."!")
-						local globalplate = GetVehicleNumberPlateText(vehicle)
+						local globalplate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 						TriggerServerEvent("stage:PromjeniStage", data.current.modNum, globalplate)
 						Wait(500)
 						TriggerEvent('stage:Provjera', -1)
@@ -468,7 +468,7 @@ function GetAction(data)
 						table.insert(elements, {label = _label, modType = k, modNum = colors[j].index})
 					end
 				elseif v.modType == 'swap' then
-					local globalplate  = GetVehicleNumberPlateText(vehicle)
+					local globalplate  = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 					local _label = ''
 					local provjera = false
 					price = math.floor(vehiclePrice * 0.40)
@@ -491,7 +491,7 @@ function GetAction(data)
 						Wait(100)
 					end
 				elseif v.modType == 'zracni' then
-					local globalplate  = GetVehicleNumberPlateText(vehicle)
+					local globalplate  = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 					local _label = ''
 					local provjera = false
 					price = math.floor(vehiclePrice * 0.10)
@@ -513,7 +513,7 @@ function GetAction(data)
 						Wait(100)
 					end
 				elseif v.modType == 'stage' then
-					local globalplate  = GetVehicleNumberPlateText(vehicle)
+					local globalplate  = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 					local _label = ''
 					local provjera = false
 					--price = 5000*1.30
@@ -542,7 +542,7 @@ function GetAction(data)
 						Wait(100)
 					end
 				elseif v.modType == 'mjenjac' then
-					local globalplate  = GetVehicleNumberPlateText(vehicle)
+					local globalplate  = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 					local _label = ''
 					price = 5000*1.30
 					if globalplate ~= nil or globalplate ~= "" or globalplate ~= " " then
@@ -563,7 +563,7 @@ function GetAction(data)
 					end
 					Wait(200)
 				elseif v.modType == 'dodaci' then
-					local globalplate  = GetVehicleNumberPlateText(vehicle)
+					local globalplate  = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 					local _label = ''
 					price = 50
 					if globalplate ~= nil or globalplate ~= "" or globalplate ~= " " then
@@ -783,7 +783,7 @@ end)
 
 RegisterNetEvent('baseevents:enteredVehicle')
 AddEventHandler('baseevents:enteredVehicle', function(currentVehicle, currentSeat, modelName, netId)
-	local globalplate  = GetVehicleNumberPlateText(currentVehicle)
+	local globalplate  = ESX.Math.Trim(GetVehicleNumberPlateText(currentVehicle))
 	if currentSeat == -1 then
 		if globalplate ~= nil or globalplate ~= "" or globalplate ~= " " then
 			ESX.TriggerServerCallback('stage:ProvjeriVozilo',function(st)
